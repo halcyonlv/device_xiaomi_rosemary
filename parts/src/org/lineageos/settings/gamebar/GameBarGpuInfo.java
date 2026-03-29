@@ -22,19 +22,22 @@ import java.io.IOException;
 
 public class GameBarGpuInfo {
 
-    private static final String GPU_USAGE_PATH = "/sys/class/kgsl/kgsl-3d0/gpu_busy_percentage";
-    private static final String GPU_CLOCK_PATH = "/sys/class/kgsl/kgsl-3d0/gpuclk";
-    private static final String GPU_TEMP_PATH  = "/sys/class/kgsl/kgsl-3d0/temp";
+    private static final String GPU_USAGE_PATH = "/sys/kernel/ged/hal/gpu_utilization";
+    private static final String GPU_CLOCK_PATH = "/sys/kernel/ged/hal/current_freqency";
 
     public static String getGpuUsage() {
         String line = readLine(GPU_USAGE_PATH);
         if (line == null) {
             return "N/A";
         }
-        line = line.replace("%", "").trim();
+
         try {
-            int val = Integer.parseInt(line);
-            return String.valueOf(val);
+            String[] parts = line.split("\\s+");
+            if (parts.length >= 1) {
+                int utilization = Integer.parseInt(parts[0]);
+                return String.valueOf(utilization);
+            }
+            return "N/A";
         } catch (NumberFormatException e) {
             return "N/A";
         }
@@ -45,26 +48,15 @@ public class GameBarGpuInfo {
         if (line == null) {
             return "N/A";
         }
-        line = line.trim();
-        try {
-            long hz = Long.parseLong(line);
-            long mhz = hz / 1_000_000;
-            return String.valueOf(mhz);
-        } catch (NumberFormatException e) {
-            return "N/A";
-        }
-    }
 
-    public static String getGpuTemp() {
-        String line = readLine(GPU_TEMP_PATH);
-        if (line == null) {
-            return "N/A";
-        }
-        line = line.trim();
         try {
-            float raw = Float.parseFloat(line);
-            float c   = raw / 1000f;
-            return String.format("%.1f", c);
+            String[] parts = line.split("\\s+");
+            if (parts.length >= 2) {
+                long freqKhz = Long.parseLong(parts[1]);
+                long mhz = freqKhz / 1_000;
+                return String.valueOf(mhz);
+            }
+            return "N/A";
         } catch (NumberFormatException e) {
             return "N/A";
         }

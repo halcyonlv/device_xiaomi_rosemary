@@ -1005,6 +1005,10 @@ on boot
     chmod 0644 /dev/goodix_fp
     chown system system /dev/goodix_fp
 
+    # GED
+    chmod 444 /sys/kernel/ged/hal/gpu_utilization
+    chmod 444 /sys/kernel/ged/hal/current_freqency
+
 # Stop bootprof
 on property:sys.boot_completed=1
     write /proc/bootprof "0"
