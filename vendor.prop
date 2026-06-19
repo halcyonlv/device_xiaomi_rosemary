@@ -162,6 +162,9 @@ persist.vendor.mtk.volte.enable=1
 persist.vendor.vilte_support=1
 persist.vendor.viwifi_support=1
 
+# Logd
+ro.logd.kernel=false
+
 # LMK
 ro.lmk.swap_free_low_percentage=20
 ro.lmk.thrashing_limit=30
