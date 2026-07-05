@@ -168,8 +168,7 @@ $(call soong_config_set_bool,libion,legacy_impl,true)
 
 # IR
 PRODUCT_PACKAGES += \
-    android.hardware.ir@1.0-impl \
-    android.hardware.ir@1.0-service
+    android.hardware.ir-service.example
 
 # Lights
 PRODUCT_PACKAGES += \
