@@ -308,6 +308,7 @@ PRODUCT_COPY_FILES += \
 
 # Rootdir
 PRODUCT_PACKAGES += \
+    chipinfo \
     fstab.mt6785 \
     fstab.mt6785.ramdisk \
     init.ago.rc \
