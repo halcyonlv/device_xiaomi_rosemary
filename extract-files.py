@@ -82,6 +82,9 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libutils-v32.so'),
     'vendor/bin/hw/vendor.mediatek.hardware.mtkpower@1.0-service': blob_fixup()
         .replace_needed('android.hardware.power-V2-ndk_platform.so', 'android.hardware.power-V2-ndk.so'),
+    'vendor/bin/mnld' : blob_fixup()
+        .replace_needed('libsensorndkbridge.so', 'android.hardware.sensors@1.0-convert-shared.so')
+        .replace_needed('libmnl.so', 'libmnl_mtk.so'),
     'vendor/lib64/libmtkcam_featurepolicy.so': blob_fixup()
         .binary_regex_replace(b'\x34\xE8\x87\x40\xB9', b'\x34\x28\x02\x80\x52'),
     'vendor/lib/hw/audio.primary.mt6785.so' : blob_fixup()
@@ -89,7 +92,7 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libalsautils.so', 'libalsautils-v31.so'),
     ('vendor/lib64/libmtkcam_stdutils.so', 'vendor/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so'): blob_fixup()
         .replace_needed('libutils.so', 'libutils-v32.so'),
-    ('vendor/bin/mnld', 'vendor/lib64/libaalservice.so', 'vendor/lib64/libcam.utils.sensorprovider.so', 'vendor/lib64/librgbwlightsensor.so'): blob_fixup()
+    ('vendor/lib64/libaalservice.so', 'vendor/lib64/libcam.utils.sensorprovider.so', 'vendor/lib64/librgbwlightsensor.so'): blob_fixup()
         .replace_needed('libsensorndkbridge.so', 'android.hardware.sensors@1.0-convert-shared.so'),
     'vendor/lib64/hw/vendor.mediatek.hardware.pq@2.15-impl.so': blob_fixup()
         .replace_needed('libutils.so', 'libutils-v32.so'),
@@ -99,7 +102,7 @@ blob_fixups: blob_fixups_user_type = {
         .binary_regex_replace(b'\xFF\x43\x01\xD1\xFD\x7B\x02\xA9', b'\xC0\x03\x5F\xD6\xFD\x7B\x02\xA9'),
     ('vendor/lib64/libteei_daemon_vfs.so', 'vendor/lib64/lib3a.flash.so'): blob_fixup()
          .add_needed('liblog.so'),
-     'vendor/lib64/libmnl.so' : blob_fixup()
+     'vendor/lib64/libmnl_mtk.so' : blob_fixup()
          .add_needed('libcutils.so'),
     ('vendor/lib/libnvram.so', 'vendor/lib64/libnvram.so', 'vendor/lib64/libsysenv.so', 'vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-mtk-neuron') : blob_fixup()
          .add_needed('libbase_shim.so'),
