@@ -253,7 +253,7 @@
       "Name": "DRAMOppMin",
       "Path": "/proc/perfmgr/boost_ctrl/dram_ctrl/ddr",
       "Values": [
-        "1",
+        "0",
         "-1"
       ],
       "ResetOnInit": true
@@ -300,6 +300,12 @@
     },
     {
       "PowerHint": "INTERACTION",
+      "Node": "DRAMOppMin",
+      "Duration": 0,
+      "Value": "0"
+    },
+    {
+      "PowerHint": "INTERACTION",
       "Node": "UclampFGMin",
       "Duration": 58,
       "Value": "15"
@@ -320,7 +326,7 @@
       "PowerHint": "LAUNCH",
       "Node": "DRAMOppMin",
       "Duration": 1500,
-      "Value": "1"
+      "Value": "0"
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",
@@ -355,7 +361,7 @@
       "PowerHint": "EXPENSIVE_RENDERING",
       "Node": "GpuPwrLevel",
       "Duration": 0,
-      "Value": "33"
+      "Value": "21"
     },
     {
       "PowerHint": "DOUBLE_TAP_TO_WAKE",
