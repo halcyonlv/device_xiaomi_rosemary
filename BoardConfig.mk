@@ -85,6 +85,9 @@ BOARD_KERNEL_CMDLINE += androidboot.serialconsole=0
 # Display
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x2000U
 
+# Fastboot package
+TARGET_SUPPORT_FASTBOOT_UPDATE := true
+
 # File systems
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
