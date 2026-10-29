@@ -34,6 +34,7 @@ ro.opengles.version=196610
 
 # Halcyon
 ro.halcyon.soc.marketname=MediaTek Helio G95
+ro.surface_flinger.blur_scale=0.5
 
 # IMS
 persist.dbg.volte_avail_ovr=1
